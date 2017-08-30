@@ -1,3 +1,11 @@
-console.log('Loaded!');
-var e = document.getElementById("text");
-e.innerHTML ="New Text";
+var button = document.getElementById('click');
+var counter = 0;
+
+
+// Counter increment
+button.onclick = function (){
+    var span = document.gerElementById('count');
+    counter = counter + 1;
+    span.innerHtml = counter.toString();
+    
+};
