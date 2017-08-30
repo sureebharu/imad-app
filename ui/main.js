@@ -1,10 +1,25 @@
 var button = document.getElementById('click');
-var counter = 0;
 
 // Counter increment
 button.onclick = function () {
-    counter = counter + 1;
-    var span = document.getElementById('count');
-    span.innerHTML = counter.toString();
     
+    // Make a new request 
+    var req = new XMLHttpRequest();
+    
+    req.onreadystatechange = function() {
+        if(req.readyState === XMLHttpRequest.DONE)
+        {
+            if (req.status === 200){
+                var counter = req.responseText;
+                var span = document.getElementById('count');
+                span.innerHTML = counter.toString();
+                
+            }
+                
+        }
+    }
+    
+    //Make request
+    req.open('GET','http://bharathiselvarajan.imad.hasura-app.io/counter/',true);
+    req.send(null);
 };
